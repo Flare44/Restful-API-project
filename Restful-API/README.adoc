@@ -1,0 +1,43 @@
+DB Phase 4
+
+Allgemein:
+Java-Version: 19
+Gradle-Version: 7.6
+SQLite-Version: Wie bei Phase3
+
+Verbesserung Phase 3:
+Ich habe folgende Verbesserungen an meiner Datenbank vorgenommen:
+- Mein SQL Trigger bei "Betreuender_Spezialist_betreut_keinen_Spezialist" war
+falsch. Ich musste die Spezialisten vertauschen, was ich in der neuen "schema.sql"
+Datei gemacht habe.
+
+- Meine Abfrage "Geben Sie genau das Projekt mit der besten Durchschnittsbewertung aus."
+war falsch, da ich nur die Projekt_id ausgegeben habe und nicht alle Attribute des jeweiligen Projekts.
+Das habe ich nun geändern, weshalb sich auch die "queries.sql" Datei in dem "data" Ordner befindet.
+
+- Zudem habe ich auch die "Telefonnummer" von Kunde von Integer zu String geändert, da es Probleme
+mit der ROWID gab, wenn man einen Integer Primary Key verwendet. Deshalb ist auch die "data.sql" Datei
+so verändert worden, dass nun die Telefonnummer als String anstatt als Integer entgegen genommen wird.
+Diese Änderung tritt auch bei allen Relationen auf, die "Telefonnummer" als Fremdschlüssel besitzen
+
+
+Kritische Entscheidungen:
+
+- Meistens habe ich eine fiktive URL bei POST-Befehlen zurückgegeben. Das war manchmal 
+die E_Mail_Adresse und manchmal eine id o.ä. 
+Diese habe ich so gewählt, dass sie für mich sinnvoll erscheint. In den Übungen
+wurde gesagt, dass die URL auch nicht funktionieren muss, was meine auch nicht tut. Ich fand
+diese Möglichkeit besser, als eine ROWID zurückzugeben, da der Nutzer der Anwendung normalerweise nichts
+mit einer id anfangen kann und z.B. eine E-Mail-Adresse deutlich sinnvoller ist.
+
+- Laut "Swagger" ist das Attribut "prioritaet" ein "boolean". In der Übung wurde gesagt, dass wir das auch als
+String implementieren können, was ich auch so gemacht habe.
+
+- Das Gehalt soll als Integer übergeben werden. Das habe ich auch so gemacht, obwohl ich es in der Datenbank selbst als 
+"double" gespeichert habe.
+
+- Bei den letzten POST-Befehlen sollten wir "laut Swagger" 204-NO_CONTENT zurückgeben, da allerdings
+in den Übungen besprochen wurde, dass wir dort 201-CREATED zurückgeben sollen, habe ich mich daran gehalten.
+
+- Generell habe ich mich an die Aussagen aus den Sprechstunden gehalten, weshalb meine Abgabe vielleicht nicht ganz mit dem "Swagger"
+übereinstimmt. In den Sprechstunden wurde allerdings auch gesagt, dass nicht alles beim "Swagger" korrekt ist, weshalb das hoffentlich alles so stimmt.

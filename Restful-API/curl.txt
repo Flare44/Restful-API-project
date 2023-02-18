@@ -1,0 +1,68 @@
+-ANWENDER:
+
+-- GET /nutzer 
+curl -X GET http://localhost:8080/nutzer -v
+
+-- POST /nutzer
+curl -X POST http://localhost:8080/nutzer -F email=maximilian2@gmail.com -F passwort=XY455 -v
+
+-- GET /kunden
+curl -X GET http://localhost:8080/kunden -v
+
+-- POST /kunden
+curl -X POST http://localhost:8080/kunden -F email=rolf@web.de -F passwort=HuaZDv65% -F telefon=019274541 -v
+
+-- GET /projektleiter
+curl -X GET http://localhost:8080/projektleiter -v
+
+-- POST /projektleiter
+curl -X POST http://localhost:8080/projektleiter -F email=adesso@gmail.com -F passwort=HArds5647 -F gehalt=985124 -v
+
+-- GET /spezialisten
+curl -X GET http://localhost:8080/spezialisten -v
+
+-- POST /spezialisten
+curl -X POST http://localhost:8080/spezialisten -F email=manuelneuer@icloud.com -F passwort=Fuball234 -F verfuegbarkeitsstatus=busy -v
+
+-- GET /projekte 
+curl -X GET http://localhost:8080/projekte -v
+
+-- GET /projekte{projektid}/bewertungen
+curl -X GET http://localhost:8080/projekte/0/bewertungen -v
+
+-- GET /projekte{projektid}/aufgaben
+curl -X GET http://localhost:8080/projekte/1/aufgaben -v
+
+-- GET /projekte{projektid}/spezialisten
+curl -X GET http://localhost:8080/projekte/1/spezialisten -v
+
+-- GET /entwickler
+curl -X GET http://localhost:8080/entwickler -v
+
+-- POST /entwickler
+curl -X POST http://localhost:8080/entwickler -F email=gustavofring@gmail.com -F passwort=PoLLos44 -F verfuegbarkeitsstatus=anwesend -F kuerzel=FRIno187 -F benennung=scratch -v
+
+-- GET /programmierer
+curl -X GET http://localhost:8080/programmierer -v
+
+-AUTHENTIFIZIERTER UND ALS KUNDE AUTHORISIERTER ANWENDER
+
+-- POST /projekte 
+curl -X POST http://localhost:8080/projekte -F name=Projektcool123 -F deadline=2023-06-06 -u kevintaylor@web.de:DBlove66 -v
+
+-- POST /projekte{projektid}/bewertungen
+curl -X POST http://localhost:8080/projekte/1/bewertungen -F punktzahl=6 -F text=Super -u 'jakob12@gmail.com:sp5C12#§' -v
+
+-- PATCH /bewertungen{bewertungid}
+curl -X PATCH http://localhost:8080/bewertungen/1 -F punktzahl=7 -F text=top -u kevintaylor@web.de:DBlove66 -v
+
+-- DELETE /bewertungen{bewertungid}
+curl -X DELETE http://localhost:8080/bewertungen/0 -u jakob12@gmail.com:sp5C12#§ -v
+
+-AUTHENTIFIZIERTER UND ALS PROJEKTLEITER AUTHORISIERTER ANWENDER
+
+-- POST /projekte/{projektid}/aufgaben
+curl -X POST http://localhost:8080/projekte/1/aufgaben -F deadline=2028-12-15 -F beschreibung=Kundenservice -F status=spaeter -F prioritaet=hoch -u leber1763@icloud.com:Power44 -v
+
+-- POST /projekte/{projektid}/spezialisten
+curl -X POST http://localhost:8080/projekte/1/spezialisten -F spezialistid=3 -u leber1763@icloud.com:Power44 -v
